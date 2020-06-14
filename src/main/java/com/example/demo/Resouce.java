@@ -21,6 +21,9 @@ public class Resouce {
 	@Autowired
 	private MedicineRepository medicineRepository;
 	
+	@Autowired
+	private MedicineService medicineService;
+	
 	@GetMapping("/")
 	public String getGreeting() {
 		return "Hello World";
@@ -41,6 +44,11 @@ public class Resouce {
 		medicineRepository.save(medicine);
 	}
 	
+	@PostMapping("/addAll/medicine")
+	public void bulkAddMedicine(@RequestBody List<Medicine> medicine) {
+		medicineRepository.saveAll(medicine);
+	}
+	
 	@PutMapping("/update/medicine")
 	public void updateMedicine(@RequestBody Medicine medicine) {
 		medicineRepository.save(medicine);
@@ -51,5 +59,10 @@ public class Resouce {
 		Medicine medicine = new Medicine();
 		medicine.setId(id);
 		medicineRepository.delete(medicine);
+	}
+	
+	@GetMapping("/get/medicineByNameAndPrice")
+	public Optional<Medicine> getmedicineByNameAndPrice(@RequestParam("name") String name,@RequestParam("price") Float price) {
+		return medicineService.getmedicineByNameAndPrice(name, price);
 	}
 }

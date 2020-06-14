@@ -15,11 +15,12 @@ public class Medicine {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "medicineid")
 	private long id;
-	@Column(name = "name")
-	private String Name;
+	@Column(name = "medicinename")
+	private String medicineName;
 	@Column(name = "power")
 	private String power;
-	
+	@Column(name = "price")
+	private float price;
 	public long getId() {
 		return id;
 	}
@@ -27,10 +28,10 @@ public class Medicine {
 		this.id = id;
 	}
 	public String getName() {
-		return Name;
+		return medicineName;
 	}
-	public void setName(String name) {
-		Name = name;
+	public void setName(String medicineName) {
+		medicineName = medicineName;
 	}
 	public String getPower() {
 		return power;
@@ -38,5 +39,10 @@ public class Medicine {
 	public void setPower(String power) {
 		this.power = power;
 	}
-
+	public float getPrice() {
+		return price;
+	}
+	public void setPrice(float price) {
+		this.price = price;
+	}
 }
